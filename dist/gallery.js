@@ -1,14 +1,15 @@
 (()=>{
 const videos=window.EDITED_VIDEOS,grid=document.querySelector('#video-grid'),filters=document.querySelector('#video-filters'),roles=document.querySelector('#role-filters');
 let role='all',selected='All projects',page=0;
-const groups=['All projects','Film songs','Songs & music videos','Devotional songs','Trailers & teasers','Production films','More edits'];
+const groups=['All projects','Film songs','Songs & music videos','Devotional songs','Trailers & teasers','Production films','More edits','Microdrama Promos'];
 const mobile=matchMedia('(max-width:600px)'),tablet=matchMedia('(max-width:900px)');
 function render(){
 const size=mobile.matches?2:tablet.matches?4:6;
 const scoped=videos.filter(v=>role==='all'||v.role===role),matches=scoped.filter(v=>selected==='All projects'||v.category===selected),pages=Math.max(1,Math.ceil(matches.length/size));page=Math.min(page,pages-1);
 document.querySelector('#role-description').textContent=role==='production'?'Our productions: filmed and edited by Bright Scene Studioz.':role==='editing'?'Selected client projects edited by Neeraj Sachdeva.':'Selected productions and editing projects.';
 for(const b of roles.children){b.classList.toggle('active',b.dataset.role===role);b.setAttribute('aria-pressed',String(b.dataset.role===role));}
-for(const b of filters.children){const n=scoped.filter(v=>b.dataset.group==='All projects'||v.category===b.dataset.group).length;b.hidden=!n;b.textContent=b.dataset.group;b.classList.toggle('active',b.dataset.group===selected);b.setAttribute('aria-pressed',String(b.dataset.group===selected));}
+for(const b of filters.children){const n=scoped.filter(v=>b.dataset.group==='All projects'||v.category===b.dataset.group).length;b.hidden=b.dataset.group==='Microdrama Promos'?role!=='editing':!n;b.textContent=b.dataset.group;b.classList.toggle('active',b.dataset.group===selected);b.setAttribute('aria-pressed',String(b.dataset.group===selected));}
+const microdrama=selected==='Microdrama Promos'&&role==='editing';document.querySelector('#microdrama-gallery').hidden=!microdrama;grid.hidden=microdrama;document.querySelector('.gallery-pages').hidden=microdrama;document.querySelector('#video-count').hidden=microdrama;document.querySelector('.preview-hint').hidden=microdrama;
 grid.replaceChildren();for(const v of matches.slice(page*size,(page+1)*size)){const a=document.createElement('a');a.className='video-card';a.href='https://www.youtube.com/watch?v='+v.id;a.target='_blank';a.rel='noopener noreferrer';const visual=document.createElement('div');visual.className='video-thumb';const img=document.createElement('img');img.src='https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg';img.alt=v.title;img.loading='lazy';const play=document.createElement('span');play.textContent='▶';visual.append(img,play);const tag=document.createElement('small');tag.textContent=(v.role==='production'?'PRODUCTION · ':'EDITING · ')+v.category;const title=document.createElement('h3');title.textContent=v.title;const link=document.createElement('p');link.textContent='Watch on YouTube ↗';a.append(visual,tag,title,link);grid.append(a);}
 document.querySelector('#video-count').textContent=matches.length+' projects';document.querySelector('#page-status').textContent=`${page+1} / ${pages}`;document.querySelector('#prev-videos').disabled=page===0;document.querySelector('#next-videos').disabled=page===pages-1;
 }
