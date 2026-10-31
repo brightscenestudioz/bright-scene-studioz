@@ -13,7 +13,7 @@ This updates the page title, description, canonical URL, Open Graph and Twitter 
 
 Delhi NCR, Chandigarh, Mohali and Mumbai are service areas, not office addresses. Do not invent local branches, reviews, ratings, awards or project upload dates. Instagram belongs to the studio; the IMDb profile belongs to Neeraj Sachdeva. The structured data preserves that distinction.
 
-The header uses a 152px WebP copy of the supplied logo (about 3 KB instead of the original 958 KB). Social previews use a 600px JPEG copy, and separate 48px favicon / 180px Apple icons are included. The original logo is preserved. These are resized copies of the same artwork, not a redesigned identity.
+All active logo references use the owner-supplied BS_Logo.png. The header uses a 152px PNG copy, social previews a 600px PNG, and separate 48px favicon / 180px Apple icons are included. Transparency is preserved. The full source is dist/assets/bs-logo.png.
 
 Fonts are requested in the document head with preconnects instead of a CSS import. Thumbnail dimensions reserve layout space, and the first row loads eagerly. Below-the-fold embeds remain lazy, and local video previews load on interaction. Real Core Web Vitals still need measurement on the deployed site; local functional checks are not a PageSpeed score.
 

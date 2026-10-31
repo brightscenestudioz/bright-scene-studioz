@@ -19,7 +19,7 @@ const services = [
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
-    {'@type':'Organization','@id':orgId,name:config.name,url,logo:url+'assets/bs-logo.jpg',description:config.description,sameAs:[config.instagram],areaServed:areas,
+    {'@type':'Organization','@id':orgId,name:config.name,url,logo:url+'assets/bs-logo.png',description:config.description,sameAs:[config.instagram],areaServed:areas,
       contactPoint:config.phones.map(telephone=>({'@type':'ContactPoint',telephone,contactType:'customer enquiries'})),
       hasOfferCatalog:{'@type':'OfferCatalog',name:'Creative services',itemListElement:services.map(([id])=>({'@type':'Offer',itemOffered:{'@id':url+'#service-'+id}}))}},
     {'@type':'Person','@id':personId,name:'Neeraj Sachdeva',jobTitle:'Video Editor',sameAs:[config.imdb]},
@@ -39,15 +39,15 @@ const head = `<!-- seo:start -->
 <meta property="og:title" content="${escape(config.title)}">
 <meta property="og:description" content="${escape(config.description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${url}assets/bs-social.jpg">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="${url}assets/bs-social.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="600">
 <meta property="og:image:alt" content="Bright Scene Studioz gold camera logo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="${escape(config.title)}">
 <meta name="twitter:description" content="${escape(config.description)}">
-<meta name="twitter:image" content="${url}assets/bs-social.jpg">
+<meta name="twitter:image" content="${url}assets/bs-social.png">
 <meta name="twitter:image:alt" content="Bright Scene Studioz gold camera logo">
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <!-- seo:end -->`;
