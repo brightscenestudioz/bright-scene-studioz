@@ -1,17 +1,18 @@
 # Deployment and future edits
 
-## Intended hosting configuration
+## Connected hosting configuration
 
-- Host: Cloudflare Pages (Free plan, subject to provider limits)
-- Git provider: owner-controlled GitHub repository
+- Host: Cloudflare Workers
+- Git repository: https://github.com/brightscenestudioz/bright-scene-studioz
 - Production branch: main
 - Framework: None
 - Build command: leave empty for this buildless project
-- Output directory: dist
-- Preview deployments: enabled for working branches / pull requests
-- Custom domain: none initially; use the assigned pages.dev address
+- Deploy command shown in dashboard: npx wrangler deploy
+- Site assets: dist
+- Preview deployments: check Cloudflare settings; enablement has not been verified
+- Public URL: https://bright-scene-studioz.brightscenestudioz.workers.dev/
 
-Status: not connected or deployed yet. Record the actual repository URL, hosting project name and production URL here after successful setup.
+The repository is connected and a public deployment exists. A successful push is not proof of a successful deployment: check the production build's commit and public content. On 2026-10-31, a deployment-only trigger commit e6d0d0e successfully ran Workers Builds and published the portfolio changes from af2aeec. The live campaign and microdrama sections and both MP4 previews were verified. The reason the earlier push was missed was not established. SEO work remains on the working branch until separately published.
 
 ## Everyday workflow
 

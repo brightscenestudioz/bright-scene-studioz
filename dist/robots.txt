@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bright-scene-studioz.brightscenestudioz.workers.dev/sitemap.xml
